@@ -1,0 +1,90 @@
+/* Agrega la fuente personalizada */
+@import url('https://fonts.googleapis.com/css2?family=HK+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Aplica la fuente a toda la página */
+body {
+    font-family: 'HK Grotesk', sans-serif;
+    color: #d4af84; /* Color mostaza en formato hexadecimal */
+}
+
+/* Estilos mejorados */
+.del {
+    text-decoration: line-through;
+    text-decoration-color: black;
+    text-decoration-thickness: 3px;
+    color: black;
+}
+
+.headcont {
+    font-size: 50px;
+    height: 100px;
+    /* Añade aquí otros estilos si es necesario */
+}
+
+.namebaby {
+    font-family: 'Dancing Script', cursive;
+    font-size: 68px;
+    text-shadow: 2px 2px 2px #aaa;
+}
+
+/* Tarjeta de invitación */
+.aspect-ratio-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 100%; /* Establece la relación de aspecto deseada (4:3 en este caso) */
+}
+
+.aspect-ratio-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen para que quepa completamente dentro del contenedor */
+}
+
+/* LISTA DE REGALOS */
+.regalos {
+    background-repeat: repeat-x;
+    background-size: 70%;
+    margin-top: -15px;
+}
+
+.ventanaDatos {
+    display: none;
+    background: linear-gradient(#d4af84, #b9dce8);
+}
+
+.ventanaDatos .cardVentana img {
+    mix-blend-mode: multiply;
+}
+
+#listContent {
+    margin-left: 5%;
+    padding-left: 2%;
+}
+
+.box {
+    max-width: 18rem;
+    display: inline-block;
+    background: #b9dce8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    outline: none;
+    padding: 2px;
+    margin: 20px;
+}
+
+.box:hover, .box:focus {
+    background: #d4af84;
+    color: #fff;
+}
+
+.box img {
+    position: relative;
+    margin-left: -40px;
+    margin-top: -40px;
+}
