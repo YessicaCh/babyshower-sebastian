@@ -49,6 +49,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 //routes
 app.get('/',(req,res) =>{
     path_source = path.join(__dirname ,'/views/index.ejs')
+    console.log(path_source)
     res.render(path_source, {colorList: {}})
     //res.sendFile(path.join(__dirname ,'/views/index.ejs'));
     //res.sendFile('/views/index.html', { root: __dirname });
