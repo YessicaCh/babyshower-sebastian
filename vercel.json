@@ -1,5 +1,5 @@
 {
-    "name": "mi-aplicacion", // Nombre de tu proyecto en Vercel
+    "name": "babyshower-sebastian", // Nombre de tu proyecto en Vercel
     "version": 2, // Versión de la configuración de Vercel (siempre usa 2)
     "builds": [
       { 
