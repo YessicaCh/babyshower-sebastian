@@ -1,6 +1,6 @@
 {
-    "name": "babyshower-sebastian", // Nombre de tu proyecto en Vercel
-    "version": 2, // Versión de la configuración de Vercel (siempre usa 2)
+    "name": "babyshower-sebastian", 
+    "version": 2, 
     "builds": [
       { 
         "src": "./src/index.js", 
