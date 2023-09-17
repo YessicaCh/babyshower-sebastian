@@ -132,23 +132,28 @@ function destroy(){
 
 window.addEventListener("load", loadData);
 
+
 async function loadData() {
-    
-    let url = 'https://babyshower-one.vercel.app/api/gifts'
-    // let url = 'http://localhost:9000/api/gifts'
+    let url = '/api/gifts'; // Ruta relativa a tu API interna
+    // let url = 'http://localhost:9000/api/gifts' (Si estás desarrollando en local)
 
-    let response = await fetch(url);
-    if (response.ok) { 
-        let gifts = await response.json();
-        gifts.map(function(Gift) {
-            createBox(Gift)
-        })
-        createBoxOtros()
+    try {
+        let response = await fetch(url);
 
-    } else { alert("Error-HTTP: " + response.status);
+        if (response.ok) {
+            let gifts = await response.json();
+            gifts.map(function(Gift) {
+                createBox(Gift);
+            });
+            createBoxOtros();
+        } else {
+            alert("Error-HTTP: " + response.status); b
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
-   
 }
+
 
 
 function addForm() {
@@ -188,35 +193,38 @@ function refresh() {
 
 async function Save() {
     let giftName = document.getElementById("titleElement").innerHTML;
-    let id  = document.getElementById("idGift").value
+    let id  = document.getElementById("idGift").value;
     
-    let names = ""
-    for (let i = 0; i < cont+1; i++) {
+    let names = "";
+    for (let i = 0; i < cont + 1; i++) {
         let name = document.getElementById("fname" + i.toString()).value;
-        names += ' ' + name
-      }
+        names += ' ' + name;
+    }
 
-    const urlpost = 'https://babyshower-one.vercel.app/api/users'
-    // const urlpost = 'http://localhost:9000/api/users'
-    let response = await fetch(urlpost, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-          },
-        body: JSON.stringify({
+    const urlpost = '/api/users'; // Ruta relativa a tu API interna
+    // const urlpost = 'http://localhost:9000/api/users' (Si estás desarrollando en local)
+
+    try {
+        let response = await fetch(urlpost, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 "name": names,
-                "giftName":giftName,
+                "giftName": giftName,
                 "idGift": id
             })
-    })
-    
-    if (response.ok) { 
-        alert("se guardo exitosamente")
-        closeWindows();
-        refresh();
-        //window.location.reload()
-    } else {
-        alert("Error-HTTP: " + response.status)
+        });
+
+        if (response.ok) {
+            alert("Se guardó exitosamente");
+            closeWindows();
+            refresh();
+        } else {
+            alert("Error-HTTP: " + response.status);
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
-    
 }
