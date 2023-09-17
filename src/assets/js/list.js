@@ -134,8 +134,8 @@ window.addEventListener("load", loadData);
 
 async function loadData() {
     
-    // let url = 'https://baby-shower-lyam.herokuapp.com/api/gifts'
-    let url = 'http://localhost:9000/api/gifts'
+    let url = 'https://babyshower-one.vercel.app/api/gifts'
+    // let url = 'http://localhost:9000/api/gifts'
 
     let response = await fetch(url);
     if (response.ok) { 
@@ -196,8 +196,8 @@ async function Save() {
         names += ' ' + name
       }
 
-    // const urlpost = 'https://baby-shower-lyam.herokuapp.com/api/users'
-    const urlpost = 'http://localhost:9000/api/users'
+    const urlpost = 'https://babyshower-one.vercel.app/api/users'
+    // const urlpost = 'http://localhost:9000/api/users'
     let response = await fetch(urlpost, {
         method: 'post',
         headers: {
