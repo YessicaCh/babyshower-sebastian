@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'assets')))
 
 // View engine setup
 app.set('View engine','ejs');
+app.engine('ejs', require('ejs').__express);
 app.set('Views',path.join(__dirname,'views'));
 
 // Middleware
