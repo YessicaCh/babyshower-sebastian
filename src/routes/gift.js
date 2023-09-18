@@ -5,20 +5,41 @@ const router = express.Router();
 const giftSchema = require("../models/gifts");
 
 //create gifts
-router.post('/gifts',(req,res) =>{
-    req.body.status = true
-    req.body.imgsrc = 'dbImg/'+req.file.filename
-    const gift = giftSchema(req.body);
-    gift.img = {
-      data: req.file.buffer,
-      contentType:req.file.mimetype,
-    }
+// router.post('/gifts',(req,res) =>{
+//     req.body.status = true
+//     req.body.imgsrc = 'dbImg/'+req.file.filename
+//     const gift = giftSchema(req.body);
+//     gift.img = {
+//       data: req.file.buffer,
+//       contentType:req.file.mimetype,
+//     }
     
-    gift.save()
-    .then((data)=>res.json(data))
-    .catch((error)=>res.json({message :error}));
-    // res.send("create user")
-})
+//     gift.save()
+//     .then((data)=>res.json(data))
+//     .catch((error)=>res.json({message :error}));
+//     // res.send("create user")
+// })
+
+router.post('/gifts', (req, res) => {
+  console.log('Solicitud POST recibida para crear un regalo');
+  console.log('Cuerpo de la solicitud:', req.body);
+
+  req.body.status = true;
+  req.body.imgsrc = 'dbImg/' + req.file.filename;
+  const gift = giftSchema(req.body);
+  gift.img = {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+  }
+
+  gift.save()
+      .then((data) => res.json(data))
+      .catch((error) => {
+          console.error('Error al guardar el regalo:', error);
+          res.json({ message: error });
+      });
+});
+
 
 //get all gifts
 router.get('/gifts',(req,res) =>{
