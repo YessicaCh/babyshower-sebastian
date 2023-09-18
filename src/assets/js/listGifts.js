@@ -22,21 +22,44 @@ function createBox(Gift)
 
 window.addEventListener("load", loadData);
 
-async function loadData() {
+// async function loadData() {
     
-    //let url = 'https://baby-shower-lyam.herokuapp.com/api/users'
-    let url = 'http://localhost:9000/api/users'
+//     //let url = 'https://baby-shower-lyam.herokuapp.com/api/users'
+//     let url = 'http://localhost:9000/api/users'
 
-    let response = await fetch(url);
-    if (response.ok) { 
-        let gifts = await response.json();
-        console.log('Data')
-        console.log(gifts)
-        gifts.map(function(Gift) {
-            console.log(Gift)
-            createBox(Gift)
-        })
-    } else { alert("Error-HTTP: " + response.status);
-    }
+//     let response = await fetch(url);
+//     if (response.ok) { 
+//         let gifts = await response.json();
+//         console.log('Data')
+//         console.log(gifts)
+//         gifts.map(function(Gift) {
+//             console.log(Gift)
+//             createBox(Gift)
+//         })
+//     } else { alert("Error-HTTP: " + response.status);
+//     }
    
+// }
+
+async function loadData() {
+    let url = '/api/users'; // Utiliza una URL relativa para acceder a la API interna en el mismo dominio
+
+    try {
+        let response = await fetch(url);
+
+        if (response.ok) {
+            let gifts = await response.json();
+            console.log('Data');
+            console.log(gifts);
+
+            gifts.forEach(function(Gift) {
+                console.log(Gift);
+                createBox(Gift);
+            });
+        } else {
+            console.error("Error-HTTP: " + response.status);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
