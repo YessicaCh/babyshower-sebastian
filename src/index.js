@@ -24,10 +24,20 @@ app.engine('ejs', require('ejs').__express);
 app.set('Views',path.join(__dirname,'views'));
 
 // Middleware
+// var storage = multer.diskStorage({
+//     destination :path.join(__dirname,'assets/dbImg'),
+//     filename:(req,file,cb)=>{
+//         cb(null,file.originalname)
+//     }
+// });
 var storage = multer.diskStorage({
-    destination :path.join(__dirname,'assets/dbImg'),
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname)
+    destination: (req, file, cb) => { 
+        const destinationPath = path.join('src', 'assets', 'dbImg');
+        console.log('Destination Path:', destinationPath); // Agrega esta línea
+        cb(null, destinationPath);
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
     }
 });
 
