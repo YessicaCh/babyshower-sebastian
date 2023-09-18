@@ -10,6 +10,10 @@
         "src": "/(.*)",
         "dest": "src/index.js"
         
+      },
+      {
+        "src": "/assets/dbImg/(.*)",
+        "dest": "src/assets/dbImg/$1"
       }
     ]
 }
